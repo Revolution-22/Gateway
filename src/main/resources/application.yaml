@@ -2,7 +2,15 @@ server:
   port: 9000
 
 spring:
+  config:
+    import: vault://secret/gateway
+  cloud:
+    vault:
+      host: vault
+      port: 8200
+      scheme: http
+      token: root
+      kv:
+        enabled: true
   application:
     name: gateway
-  config:
-    import: "configserver:http://config-service:8888"
