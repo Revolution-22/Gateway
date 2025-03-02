@@ -1,4 +1,4 @@
-package com.revolution.Gateway;
+package com.revolution.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

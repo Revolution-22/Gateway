@@ -1,4 +1,4 @@
-package com.revolution.Gateway;
+package com.revolution.gateway;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
