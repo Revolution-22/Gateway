@@ -15,6 +15,10 @@ public class RouteConfiguration {
                         .path("/auth/**")
                         .filters(f -> f.rewritePath("/auth/(?<segment>.*)", "/auth/${segment}")) // Rewrite path
                         .uri("lb://auth-service"))
+                .route(p -> p
+                        .path("/payments/**")
+                        .filters(f -> f.rewritePath("/payments/(?<segment>.*)", "/payments/${segment}")) // Rewrite path
+                        .uri("lb://payment-service"))
                 .build();
     }
 
