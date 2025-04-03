@@ -2,6 +2,9 @@ server:
   port: 9000
 
 spring:
+  threads:
+    virtual:
+      enabled: true
   config:
     import: vault://secret/gateway
   cloud:
