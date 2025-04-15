@@ -2,6 +2,8 @@ server:
   port: 9000
 
 spring:
+  main:
+    web-application-type: reactive
   threads:
     virtual:
       enabled: true
@@ -17,3 +19,7 @@ spring:
         enabled: true
   application:
     name: gateway
+
+auth:
+  service:
+    url: lb://auth-service
