@@ -23,6 +23,14 @@ public class RouteConfiguration {
                         .path("/payments/**")
                         .filters(f -> f.filter(authenticationFilter).rewritePath("/payments/(?<segment>.*)", "/payments/${segment}")) // Rewrite path
                         .uri("lb://payment-service"))
+                .route(p -> p
+                        .path("/details/**")
+                        .filters(f -> f.filter(authenticationFilter).rewritePath("/details/(?<segment>.*)", "/details/${segment}")) // Rewrite path
+                        .uri("lb://details-service"))
+                .route(p -> p
+                        .path("/admin/**")
+                        .filters(f -> f.filter(authenticationFilter).rewritePath("/admin/(?<segment>.*)", "/admin/${segment}")) // Rewrite path
+                        .uri("lb://admin-service"))
                 .build();
     }
 

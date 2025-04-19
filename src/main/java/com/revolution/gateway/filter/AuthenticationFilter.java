@@ -11,6 +11,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -28,7 +29,11 @@ public class AuthenticationFilter implements GatewayFilter {
             String token = authorizationHeaders.get(0);
             if (token != null) {
                 return authClient.validate(token)
-                        .flatMap(_ -> chain.filter(exchange))
+                        .flatMap(response -> {
+                            exchange.getResponse().getHeaders().add("X-USER-ID", String.valueOf(response.userId()));
+                            exchange.getResponse().getHeaders().add("X-USER-ROLES", String.join(",", response.roles()));
+                            return chain.filter(exchange);
+                        })
                         .onErrorResume(e -> {
                             e.printStackTrace();
                             return onError(exchange, HttpStatus.UNAUTHORIZED);

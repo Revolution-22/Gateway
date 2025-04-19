@@ -15,11 +15,11 @@
 	<description>Gateway server</description>
 
 	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
 
 	<properties>
 		<java.version>23</java.version>
@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>com.github.Revolution-22</groupId>
 			<artifactId>Common</artifactId>
-			<version>bf28ea3f00</version>
+			<version>e5c0609d49</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
